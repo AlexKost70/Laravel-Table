@@ -1,0 +1,28 @@
+table {
+    border: 3px solid gainsboro;
+}
+
+table {
+    font-family: "Times New Roman", sans-serif;
+    border-collapse: collapse;
+}
+
+table thead {
+    font-size: 20px;
+}
+
+table td,
+table th {
+    padding: 10px;
+    border: 1px solid gainsboro;
+    border-collapse: collapse;
+}
+
+table tbody {
+    text-align: left;
+}
+
+table tbody tr td:first-child {
+    text-align: center;
+    font-weight: bold;
+}
