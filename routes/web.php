@@ -16,3 +16,4 @@ use App\Http\Controllers\MainController;
 
 Route::get('/', function () { return view('main'); });
 Route::get('/table', [MainController::class, 'index'])->name('table');
+Route::get('/table/search', [MainController::class, 'search'])->name('search');

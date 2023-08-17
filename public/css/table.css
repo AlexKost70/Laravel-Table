@@ -1,8 +1,25 @@
-table {
-    border: 3px solid gainsboro;
+.search-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 200px;
+    height: 30px;
+}
+
+.search-box button {
+    width: 90px;
+    height: 30px;
+    border-radius: 5px;
 }
 
 table {
+    border: 3px solid gainsboro;
     font-family: "Times New Roman", sans-serif;
     border-collapse: collapse;
 }

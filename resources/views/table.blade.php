@@ -13,6 +13,14 @@
 <main>
     <h1>Список зарегистрированных пользователей</h1>
     <div>
+        <form action="{{ route('search') }}" method="get" class="search-box">
+            @csrf
+            <label for="search">Имя:</label>
+            <input type="search" name="search" id="search" value="{{request()->get('search')}}" placeholder="Введите имя">
+            <label for="date">Дата регистрации:</label>
+            <input type="date" name="date" id="date" value="{{request()->get('date')}}">
+            <button type="submit">Искать</button>
+        </form>
         <table>
             <thead>
             <tr>
