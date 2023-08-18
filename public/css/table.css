@@ -22,6 +22,7 @@ table {
     border: 3px solid gainsboro;
     font-family: "Times New Roman", sans-serif;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 table thead {

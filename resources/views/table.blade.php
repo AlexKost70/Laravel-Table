@@ -35,6 +35,10 @@
             </thead>
             <tbody id="tbody"></tbody>
         </table>
+        <form action="{{ route("logout") }}" method="post">
+            @csrf
+            <button id="logout">Выйти</button>
+        </form>
     </div>
 </main>
 <script type="text/javascript" src="{{ asset('js/table.js') }}"></script>

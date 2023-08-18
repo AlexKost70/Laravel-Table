@@ -20,6 +20,18 @@ main {
     gap: 20px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form .input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 main button {
     width: 170px;
     height: 70px;

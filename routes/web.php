@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\API\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,17 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', function () { return view('main'); });
-Route::get('/table', [MainController::class, 'index'])->name('table');
-//Route::get('/table/search', [MainController::class, 'search'])->name('search');
+Route::group(['middleware' => 'guest'],function () {
+    Route::get('/', function () { return view('main'); })->name('main');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+});
+
+Route::group(['middleware' => 'auth'],function () {
+    Route::get('/table', [MainController::class, 'index'])->name('table');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+});
+
+
+
+
+

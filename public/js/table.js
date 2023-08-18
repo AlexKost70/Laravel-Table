@@ -71,4 +71,3 @@ for (let button of sortButtons) {
     button.addEventListener("click", handleSortButtonClick);
 }
 
-
