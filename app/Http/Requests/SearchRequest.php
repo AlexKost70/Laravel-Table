@@ -15,7 +15,8 @@ class SearchRequest extends  FormRequest
     {
         return [
             'search' => 'nullable|string|max:70',
-            'date' => 'nullable|date'
+            'date' => 'nullable|date',
+            'sort_column' => 'nullable'
         ];
     }
 }

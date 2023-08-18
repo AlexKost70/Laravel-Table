@@ -28,6 +28,13 @@ table thead {
     font-size: 20px;
 }
 
+table thead a {
+    text-decoration: none;
+    color: #ef4444;
+    display: inline-block;
+    margin: 3px;
+}
+
 table td,
 table th {
     padding: 10px;

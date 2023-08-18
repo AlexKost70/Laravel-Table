@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/main.css')  }}">
     <link rel="stylesheet" href="{{ asset('css/table.css')  }}">
     <title>Список зарегистрированных пользователей</title>
@@ -13,41 +14,29 @@
 <main>
     <h1>Список зарегистрированных пользователей</h1>
     <div>
-        <form action="{{ route('search') }}" method="get" class="search-box">
-            @csrf
+        <div class="search-box">
             <label for="search">Имя:</label>
-            <input type="search" name="search" id="search" value="{{request()->get('search')}}" placeholder="Введите имя">
+            <input type="search" name="search" id="search" placeholder="Введите имя">
             <label for="date">Дата регистрации:</label>
-            <input type="date" name="date" id="date" value="{{request()->get('date')}}">
-            <button type="submit">Искать</button>
-        </form>
+            <input type="date" name="date" id="date">
+            <button type="reset" id="submit">Сброс</button>
+        </div>
         <table>
             <thead>
             <tr>
-                <th>id</th>
-                <th>Имя</th>
-                <th>Фамилия</th>
-                <th>Хэш пароля</th>
-                <th>Ник</th>
-                <th>Дата создания</th>
-                <th>Дата обновления</th>
+                <th class="id">id <a href="" class="asc arrow" onclick="">↑</a><a href="" class="desc arrow">↓</a></th>
+                <th class="name">Имя <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
+                <th class="surname">Фамилия <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
+                <th class="password">Хэш пароля <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
+                <th class="username">Ник <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
+                <th class="created_at">Дата создания <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
+                <th class="updated_at">Дата обновления <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
             </tr>
             </thead>
-            <tbody>
-                @foreach($users as $user)
-                    <tr>
-                        <td>{{ $user->id }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->surname }}</td>
-                        <td>{{ $user->password }}</td>
-                        <td>{{ $user->username }}</td>
-                        <td>{{ $user->created_at }}</td>
-                        <td>{{ $user->updated_at }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
+            <tbody id="tbody"></tbody>
         </table>
     </div>
 </main>
+<script type="text/javascript" src="{{ asset('js/table.js') }}"></script>
 </body>
 </html>
