@@ -20,6 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/filtredusers', [UsersController::class, 'getUsersByFilter']);
-Route::get('/users', [UsersController::class, 'getUsersList']);
-Route::post('/orderedusers', [UsersController::class, 'getUsersByOrder']);
+Route::post('/users', [UsersController::class, 'getUsersList']);

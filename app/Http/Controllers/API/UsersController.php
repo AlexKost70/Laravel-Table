@@ -9,14 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
-    public function getUsersList()
-    {
-        $data = DB::table('users')->leftJoin('infos', 'users.id', '=', 'infos.user_id')->select('users.*', 'infos.phone', 'infos.address')
-            ->orderBy('id', 'asc')->get();
-        return response($data, 200);
-    }
-
-    public function getUsersByFilter(SearchRequest $request)
+    public function getUsersList(SearchRequest $request)
     {
         $data = $request->validated();
         $users = DB::table('users')->leftJoin('infos', 'users.id', '=', 'infos.user_id')->select('users.*', 'infos.phone', 'infos.address')

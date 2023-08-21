@@ -28,22 +28,7 @@ const handleSortButtonClick = e => {
     getUsersByFilter(searchInput.value, dateInput.value, [column, sortType]);
 }
 
-(async function getUsers() {
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-    const response = await fetch('/api/users', {
-        method: 'GET',
-        headers: {
-            'X-CSRF-TOKEN': csrfToken
-        }
-    });
-    const users = await response.json();
-
-    if (response) {
-        renderTable(users);
-    }
-})();
-
-async function getUsersByFilter(search, date, sortColumn = null) {
+async function getUsersByFilter(search = null, date = null, sortColumn = null) {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
     let body = {
         search: search,
@@ -51,7 +36,7 @@ async function getUsersByFilter(search, date, sortColumn = null) {
         sort_column: sortColumn
     }
 
-    const response = await fetch('/api/filtredusers', {
+    const response = await fetch('/api/users', {
         method: 'POST',
         headers: {
             'X-CSRF-TOKEN': csrfToken,
@@ -72,4 +57,6 @@ dateInput.addEventListener("change", () => getUsersByFilter(searchInput.value, d
 for (let button of sortButtons) {
     button.addEventListener("click", handleSortButtonClick);
 }
+
+getUsersByFilter();
 
