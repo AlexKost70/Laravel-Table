@@ -31,6 +31,8 @@
                 <th class="username">Ник <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
                 <th class="created_at">Дата создания <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
                 <th class="updated_at">Дата обновления <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
+                <th class="phone">Телефон <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
+                <th class="address">Адрес <a href="" class="asc arrow">↑</a><a href="" class="desc arrow">↓</a></th>
             </tr>
             </thead>
             <tbody id="tbody"></tbody>

@@ -11,9 +11,15 @@ const renderTable = users => {
 
     for (let user of users) {
         let tr = document.createElement("tr");
-
         for (let key in user) {
-            tr.innerHTML += `<td>${user[key]}</td>`
+            if (key !== "user_id") {
+                let value = user[key];
+                if (user[key] === null) {
+                    value = "Отсутствует";
+                }
+
+                tr.innerHTML += `<td>${value}</td>`
+            }
         }
         tbody.appendChild(tr);
     }
