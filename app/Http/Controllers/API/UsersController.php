@@ -21,16 +21,16 @@ class UsersController extends Controller
         $data = $request->validated();
         $users = DB::table('users')->leftJoin('infos', 'users.id', '=', 'infos.user_id')->select('users.*', 'infos.phone', 'infos.address')
             ->when($data['search'], function ($query,$search) {
-                $query->where('name', 'like', '%'.$search.'%')
-                    ->orderBy('id', 'asc');
+                $query->where('name', 'like', '%'.$search.'%');
             })
             ->when($data['date'], function ($query, $date) {
                 $query->where('users.created_at', '>=', $date)
-                    ->where('users.created_at', '<=', Carbon::parse($date)->addDay()->format('Y-m-d'))
-                    ->orderBy('id', 'asc');
+                    ->where('users.created_at', '<=', Carbon::parse($date)->addDay()->format('Y-m-d'));
             })
             ->when($data['sort_column'], function ($query, $sortValues) {
                 $query->orderBy($sortValues[0], $sortValues[1]);
+            },function ($query, $sortValues) {
+                $query->orderBy('id', 'asc');
             })
             ->get();
         return response($users, 200);

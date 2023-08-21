@@ -13,11 +13,7 @@ const renderTable = users => {
         let tr = document.createElement("tr");
         for (let key in user) {
             if (key !== "user_id") {
-                let value = user[key];
-                if (user[key] === null) {
-                    value = "Отсутствует";
-                }
-
+                let value = user[key] === null ? "Отсутствует" : user[key];
                 tr.innerHTML += `<td>${value}</td>`
             }
         }
