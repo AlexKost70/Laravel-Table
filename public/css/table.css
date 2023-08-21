@@ -51,3 +51,12 @@ table tbody tr td:first-child {
     text-align: center;
     font-weight: bold;
 }
+
+.bottom {
+    display: flex;
+    gap: 20px;
+}
+
+.bottom .total {
+    order: 1;
+}

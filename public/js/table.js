@@ -3,8 +3,9 @@ const dateInput = document.getElementById("date");
 const clearButton = document.getElementById("submit");
 const tbody = document.getElementById("tbody");
 const sortButtons = document.getElementsByClassName("arrow");
+let totalUsers = document.querySelector(".total span");
 
-const renderTable = users => {
+const renderTable = (users, count) => {
     if (tbody.children.length > 0) {
         tbody.innerHTML = "";
     }
@@ -19,6 +20,7 @@ const renderTable = users => {
         }
         tbody.appendChild(tr);
     }
+    totalUsers.textContent = count;
 }
 
 const handleSortButtonClick = e => {
@@ -44,10 +46,10 @@ async function getUsersByFilter(search = null, date = null, sortColumn = null) {
         },
         body: JSON.stringify(body)
     });
-    const users = await response.json();
+    const data = await response.json();
 
     if (response) {
-        renderTable(users);
+        renderTable(data.users, data.count);
     }
 }
 clearButton.addEventListener("click", () => getUsersByFilter(searchInput.value = "", dateInput.value = ""));

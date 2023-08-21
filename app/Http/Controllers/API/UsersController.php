@@ -26,6 +26,6 @@ class UsersController extends Controller
                 $query->orderBy('id', 'asc');
             })
             ->get();
-        return response($users, 200);
+        return response(["users"=>$users, "count"=>$users->count()], 200);
     }
 }
