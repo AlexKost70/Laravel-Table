@@ -60,3 +60,7 @@ table tbody tr td:first-child {
 .bottom .total {
     order: 1;
 }
+
+.bottom .total span {
+    color: #ef4444;
+}
