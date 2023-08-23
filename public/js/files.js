@@ -1,6 +1,6 @@
 const gallery = document.querySelector(".gallery");
 
-async function getFiles() {
+(async function getFiles() {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
     const response = await fetch('/api/getFiles', {
@@ -15,17 +15,14 @@ async function getFiles() {
     if (response) {
         renderImages(data);
     }
-}
+})();
 
 const renderImages = images => {
-    console.log(images);
     images.forEach(imagePath => {
         if (imagePath.startsWith("public/images")) {
             imagePath = imagePath.substring(7);
-            imageElement = "storage/" + imagePath;
+            const imageElement = "storage/" + imagePath;
             gallery.innerHTML += `<img src=${imageElement} alt="image">`;
         }
     });
 }
-
-getFiles();
