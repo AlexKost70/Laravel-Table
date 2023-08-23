@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\API\LoginController;
+use App\Http\Controllers\API\FilesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::group(['middleware' => 'guest'],function () {
 
 Route::group(['middleware' => 'auth'],function () {
     Route::get('/table', [MainController::class, 'index'])->name('table');
+    Route::get('/files', function () { return view('files'); })->name('files');
+    Route::post('/upload', [FilesController::class, 'upload'])->name('upload');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
