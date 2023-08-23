@@ -6,28 +6,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/main.css')  }}">
-    <title>Войти в аккаунт</title>
+    <title>Меню</title>
 </head>
 <body>
     <main>
-        <h1>Войти в аккаунт</h1>
-        <form action="{{ route('login') }}" method="post">
+        <h1>Меню</h1>
+        <ul class="menu">
+            <li><a href={{ route('welcome') }}>Начальная страница Laravel</a></li>
+            <li><a href={{ route('files') }}>Фотогалерея</a></li>
+            <li><a href={{ route('table') }}>Список зарегистрированных пользователей</a></li>
+        </ul>
+        <form action="{{ route("logout") }}" method="post">
             @csrf
-            <div class="input-box">
-                <label for="login">Логин</label>
-                <input type="text" name="login" id="login">
-                @error('login')
-                    <p class="error">{{ $errors->first("login") }}</p>
-                @enderror
-            </div>
-            <div class="input-box">
-                <label for="password">Пароль</label>
-                <input type="password" name="password" id="password">
-                @error('password')
-                    <p class="error">{{ $errors->first("password") }}</p>
-                @enderror
-            </div>
-            <button type="submit">Войти</button>
+            <button id="logout">Выйти</button>
         </form>
     </main>
 </body>

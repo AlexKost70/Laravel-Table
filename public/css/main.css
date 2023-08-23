@@ -20,6 +20,20 @@ main {
     gap: 20px;
 }
 
+main .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+main .menu a {
+    text-decoration: none;
+    color: #1a202c;
+    border-bottom: 3px dashed #1a202c;
+}
+
 form {
     display: flex;
     flex-direction: column;

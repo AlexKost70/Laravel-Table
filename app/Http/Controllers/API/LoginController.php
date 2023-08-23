@@ -6,14 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
     public function index(): View
     {
-        return view('main');
+        return view('loginPage');
     }
 
     public function login (LoginRequest $request)
@@ -30,7 +29,7 @@ class LoginController extends Controller
         if ($user && Hash::check($data['password'], $user->password))
         {
             Auth::login($user);
-            return view("table");
+            return view("main");
         }
 
         return redirect()->back();
@@ -40,6 +39,6 @@ class LoginController extends Controller
     public function logout () {
 
         Auth::logout();
-        return redirect()->route('main');
+        return redirect()->route('loginPage');
     }
 }

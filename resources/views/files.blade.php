@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="{{ asset('css/main.css')  }}">
     <link rel="stylesheet" href="{{ asset('css/files.css')  }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Файлы</title>
+    <title>Фотогалерея</title>
 </head>
 <body>
     <main>
         <div class="upload">
-            <h1>Файлы</h1>
+            <h1>Фотогалерея</h1>
             <form action="{{ route('upload') }}" enctype='multipart/form-data' method="post">
                 @csrf
                 <label for="image">Загрузить изображение: </label>
@@ -21,8 +21,12 @@
                 <button type="submit">Отправить</button>
             </form>
         </div>
-        <div class="gallery">
-
+        <div class="gallery"></div>
+        <div class="bottom">
+            <form action="{{ route("logout") }}" method="post">
+                @csrf
+                <button id="logout">Выйти</button>
+            </form>
         </div>
     </main>
     <script type="text/javascript" src="{{ asset('js/files.js') }}"></script>
